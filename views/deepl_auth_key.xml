@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="deepl_auth_key" model="ir.config_parameter">
+            <field name="key">deepl.auth.key</field>
+            <field name="value"/>
+        </record>
+
+    </data>
+</odoo>

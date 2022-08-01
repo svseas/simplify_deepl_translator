@@ -8,6 +8,9 @@
     'author': 'Bojan Anchev',
     'license': 'LGPL-3',
     'depends': ['web'],
+    'data': [
+        'views/deepl_auth_key.xml'
+    ],
     'assets': {
         'web._assets_common_scripts': [
             'simplify_deepl_translator/static/src/js/deepl.js'

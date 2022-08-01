@@ -11,7 +11,7 @@ class IrTranslation(models.Model):
 
     @api.model
     def get_deepl_translation(self, languages, word):
-        auth_key = "a34c6fa4-5aba-97a1-1c1d-98890350d523"
+        auth_key = self.env['ir.config_parameter'].sudo().get_param('deepl.auth.key')
         translator = deepl.Translator(auth_key)
         translations = []
         for lang in languages:

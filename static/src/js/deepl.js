@@ -36,8 +36,8 @@ odoo.define('simplify_deepl_translator.Deepl', function (require) {
         },
 
         deepl: function () {
-            var languages = [];
             var self = this;
+            var languages = [];
             var word = this.userLanguageValue;
             this.el.querySelectorAll('input[type=text],textarea').forEach((t) => {
                 var initialValue = this.data.find((d) => d.id == t.dataset.id);
