@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <div t-name="TranslationDialog">
+        <div class="row" t-foreach="widget.data" t-as="term">
+            <div t-attf-class="col-12 #{widget.showSrc ? 'col-lg-2' : 'col-lg-3'} #{widget.currentInterfaceLanguage == term.lang ? 'o_language_current' : ''}">
+                <t t-esc="term.langName"/>
+            </div>
+            <div t-if="widget.showSrc" class="col-12 col-lg-3 source">
+                <t t-esc="term.source"/>
+            </div>
+            <div t-attf-class="col-12 #{widget.showSrc ? 'col-lg-7' : 'col-lg-9'} translation d-flex mb-3">
+                <input t-if="!widget.isText" type="text"
+                       class="o_field_char o_input"
+                       t-att-value="term.value"
+                       t-att-data-id="term.id"/>
+                <textarea t-if="widget.isText"
+                          t-esc="term.value"
+                          t-att-data-id="term.id"
+                          t-att-rows="widget.showSrc ? 2 : 5"
+                          class="o_field_text o_field_translate o_field_widget o_input">
+                </textarea>
+                <button class="btn btn-secondary deepl_one" t-attf-term="#{term.lang}" t-attf-value="#{term.value}">
+                    <img src="/simplify_deepl_translator/static/description/deepl_logo.png"
+                         width="50px" height="50px"/>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</templates>

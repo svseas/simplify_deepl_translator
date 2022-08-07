@@ -5,7 +5,8 @@
     'summary': 'Deepl Translator',
     'description': 'Deepl Translator',
     'category': 'All',
-    'author': 'Bojan Anchev',
+    'author': 'Simplify-ERP™',
+    'website': 'https://simplify-erp.com',
     'license': 'LGPL-3',
     'depends': ['web'],
     'data': [
@@ -14,6 +15,9 @@
     'assets': {
         'web._assets_common_scripts': [
             'simplify_deepl_translator/static/src/js/deepl.js'
+        ],
+        'web.assets_qweb': [
+            'simplify_deepl_translator/static/src/xml/translate_dialog.xml'
         ]
     },
     'external_dependencies': {
