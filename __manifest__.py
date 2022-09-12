@@ -8,16 +8,13 @@
     'author': 'Simplify-ERP™',
     'website': 'https://simplify-erp.com',
     'license': 'LGPL-3',
-    'depends': ['web'],
+    'depends': ['web', 'simplify_translation_dialog'],
     'data': [
         'views/deepl_auth_key.xml'
     ],
     'assets': {
         'web._assets_common_scripts': [
             'simplify_deepl_translator/static/src/js/deepl.js'
-        ],
-        'web.assets_qweb': [
-            'simplify_deepl_translator/static/src/xml/translate_dialog.xml'
         ]
     },
     'external_dependencies': {
