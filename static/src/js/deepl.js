@@ -38,6 +38,17 @@ odoo.define('simplify_deepl_translator.Deepl', function (require) {
       });
     },
 
+    check_deepl_language_domain: function (language) {
+      var language = language.split('_');
+      language = language[language.length - 1];
+      var deepl_target_languages = ['AU', 'BE', 'BG', 'CA', 'CH', 'CS', 'DA', 'DE', 'EL', 'EN', 'GB', 'US', 'ES', 'ET', 'FI', 'FR', 'HU', 'ID', 'IT', 'IN', 'JA', 'LT', 'LV', 'NL', 'PL', 'PT', 'PT-BR', 'PT-PT', 'RO', 'RU', 'SK', 'SL', 'SV', 'TR', 'UK', 'ZH'];
+      if (deepl_target_languages.includes(language)) {
+        return true;
+      }
+      return false;
+    },
+
+
     deeplAll: function () {
       var self = this;
       var languages = [];
