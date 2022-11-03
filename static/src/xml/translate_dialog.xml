@@ -20,7 +20,9 @@
                           t-att-rows="widget.showSrc ? 2 : 5"
                           class="o_field_text o_field_translate o_field_widget o_input">
                 </textarea>
-                <button class="btn btn-secondary deepl_one" t-attf-term="#{term.lang}" t-attf-value="#{term.value}">
+                <t t-set="domain_check" t-value="widget.check_deepl_language_domain(term.lang)"/>
+                <button class="btn btn-secondary deepl_one" t-attf-term="#{term.lang}" t-attf-value="#{term.value}"
+                        t-if="domain_check">
                     <img src="/simplify_deepl_translator/static/description/deepl_logo.png"
                          width="50px" height="50px"/>
                 </button>

@@ -1,0 +1,92 @@
+<odoo>
+
+    <record id="ir_translation_products_search" model="ir.ui.view">
+        <field name="name">ir.translation.products.search</field>
+        <field name="model">ir.translation</field>
+        <field name="inherit_id" ref="base.view_translation_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[last()]" position="after">
+                <field name="product_type"/>
+                <field name="product_name"/>
+                <field name="product_field_name"/>
+                <group>
+                    <filter string="Product Type" name="product_type" context="{'group_by': 'product_type'}"/>
+                    <filter string="Product Name" name="product_name" context="{'group_by': 'product_name'}"/>
+                    <filter string="Product Field Name" name="product_field_name"
+                            context="{'group_by': 'product_field_name'}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="ir_translation_tree" model="ir.ui.view">
+        <field name="name">ir.translation.tree</field>
+        <field name="model">ir.translation</field>
+        <field name="arch" type="xml">
+            <tree create="0" delete="0">
+                <field name="product_type"/>
+                <field name="product_name"/>
+                <field name="product_field_name"/>
+                <field name="src"/>
+                <field name="value"/>
+                <field name="lang"/>
+                <field name="translated_text"/>
+                <button name="deepl_translate" type="object" string="Translate" class="btn btn-primary"/>
+                <button name="deepl_translate_save" type="object" string="Save" class="btn btn-primary"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_translations" model="ir.actions.act_window">
+        <field name="name">Product Translations</field>
+        <field name="res_model">ir.translation</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="ir_translation_tree"/>
+        <field name="domain">[('product_exist', '=', True)]</field>
+    </record>
+
+    <menuitem
+            name="Product Translations"
+            id="menu_product_translations"
+            parent="sale.product_menu_catalog"
+            action="product_translations"
+    />
+
+    <record id="action_translate_product_variants" model="ir.actions.server">
+        <field name="name">Translate all Products (using Deepl)</field>
+        <field name="model_id" ref="base.model_ir_translation"/>
+        <field name="binding_model_id" ref="base.model_ir_translation"/>
+        <field name="state">code</field>
+        <field name="code">action = records.translate_products()</field>
+    </record>
+
+    <record id="update_translations" model="ir.cron">
+        <field name="name">Update Translations</field>
+        <field name="model_id" ref="model_ir_translation"/>
+        <field name="state">code</field>
+        <field name="code">model.translate_fields_products()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name='interval_number'>1</field>
+        <field name='interval_type'>minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+        <field name="doall" eval="False"/>
+    </record>
+
+    <record id="action_translate_product_template" model="ir.actions.server">
+        <field name="name">Translate Products (using Deepl)</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">action = records.translate_products_deepl()</field>
+    </record>
+
+    <record id="action_translate_product_template" model="ir.actions.server">
+        <field name="name">Translate Products (using Deepl)</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">action = records.translate_products_deepl()</field>
+    </record>
+
+</odoo>
