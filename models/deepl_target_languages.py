@@ -1,9 +1,7 @@
 DEEPL_TARGET_LANGUAGES = [
     'AU',
-    'BE',
     'BG',
     'CA',
-    'CH',
     'CS',
     'DA',
     'DE',

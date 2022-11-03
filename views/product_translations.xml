@@ -12,7 +12,8 @@
                 <group>
                     <filter string="Product Type" name="product_type" context="{'group_by': 'product_type'}"/>
                     <filter string="Product Name" name="product_name" context="{'group_by': 'product_name'}"/>
-                    <filter string="Product Field Name" name="product_field_name" context="{'group_by': 'product_field_name'}"/>
+                    <filter string="Product Field Name" name="product_field_name"
+                            context="{'group_by': 'product_field_name'}"/>
                 </group>
             </xpath>
         </field>
@@ -41,8 +42,7 @@
         <field name="res_model">ir.translation</field>
         <field name="view_mode">tree</field>
         <field name="view_id" ref="ir_translation_tree"/>
-        <field name="domain">[('product_exist', '=', True)]
-        </field>
+        <field name="domain">[('product_exist', '=', True)]</field>
     </record>
 
     <menuitem
@@ -71,6 +71,22 @@
         <field name="numbercall">-1</field>
         <field name="active">True</field>
         <field name="doall" eval="False"/>
+    </record>
+
+    <record id="action_translate_product_template" model="ir.actions.server">
+        <field name="name">Translate Products (using Deepl)</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">action = records.translate_products_deepl()</field>
+    </record>
+
+    <record id="action_translate_product_template" model="ir.actions.server">
+        <field name="name">Translate Products (using Deepl)</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">action = records.translate_products_deepl()</field>
     </record>
 
 </odoo>
